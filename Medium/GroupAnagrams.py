@@ -1,16 +1,21 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        dictionary = dict()
+    def groupAnagrams(strs):
+        hashMap = dict()
         result = []
-        for i in range(len(strs)):
-            required = str(sorted(strs[i]))
-            if required in dictionary:
-                dictionary[required].append(i)
+        for word in strs:
+            sWord= str(sorted(word))            
+            if sWord in hashMap:
+                hashMap[sWord].append(word)
             else:
-                dictionary[required] = [i]
-        for indexes in dictionary.values():
-            answer = []
-            for index in indexes:
-                answer.append(strs[index])
-            result.append(answer)
+                hashMap[sWord] = [word]
+        
+        for value in hashMap.values():            
+            result.append(value)
+            
         return result
+        
+            
+        
+
+        
+Solution.groupAnagrams(["eat","tea","tan","ate","nat","bat"])
